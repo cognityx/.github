@@ -1,0 +1,11 @@
+{
+  "name": "Publish Cognityx documentation",
+  "description": "Rebuild the Cognityx public documentation portal after pushes to the default branch.",
+  "iconName": "octicon book",
+  "categories": [
+    "Automation"
+  ],
+  "filePatterns": [
+    "^mkdocs\\.yml$"
+  ]
+}
