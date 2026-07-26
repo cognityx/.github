@@ -8,3 +8,13 @@ public documentation portal after each push to their default branch.
 
 The portal also discovers documentation repositories automatically every two
 hours.
+
+Component MkDocs navigation should begin with:
+
+```yaml
+nav:
+  - Cognityx Home: https://cognityx.github.io/
+```
+
+This gives every generated component site a consistent route back to the
+public documentation root.
