@@ -1,0 +1,12 @@
+{
+  "name": "Cognityx Python CI",
+  "description": "Run all tests, strict documentation, and package builds through the central Cognityx workflow.",
+  "iconName": "octicon workflow",
+  "categories": [
+    "Python"
+  ],
+  "filePatterns": [
+    "pyproject\\.toml$",
+    "uv\\.lock$"
+  ]
+}
