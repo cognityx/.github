@@ -23,6 +23,11 @@ on:
         required: false
         type: boolean
         default: false
+      install-all-extras:
+        description: Install every optional extra for tests that exercise them.
+        required: false
+        type: boolean
+        default: false
 
 permissions:
   contents: read
@@ -49,7 +54,9 @@ jobs:
           cache-dependency-glob: uv.lock
       - name: Install development dependencies
         run: |
-          if python -c 'import sys, tomllib; data = tomllib.load(open("pyproject.toml", "rb")); sys.exit("dev" not in data.get("project", {}).get("optional-dependencies", {}))'; then
+          if [[ "${{ inputs.install-all-extras }}" == "true" ]]; then
+            uv sync --locked --all-groups --all-extras
+          elif python -c 'import sys, tomllib; data = tomllib.load(open("pyproject.toml", "rb")); sys.exit("dev" not in data.get("project", {}).get("optional-dependencies", {}))'; then
             uv sync --locked --all-groups --extra dev
           else
             uv sync --locked --all-groups
@@ -74,7 +81,9 @@ jobs:
           cache-dependency-glob: uv.lock
       - name: Install development dependencies
         run: |
-          if python -c 'import sys, tomllib; data = tomllib.load(open("pyproject.toml", "rb")); sys.exit("dev" not in data.get("project", {}).get("optional-dependencies", {}))'; then
+          if [[ "${{ inputs.install-all-extras }}" == "true" ]]; then
+            uv sync --locked --all-groups --all-extras
+          elif python -c 'import sys, tomllib; data = tomllib.load(open("pyproject.toml", "rb")); sys.exit("dev" not in data.get("project", {}).get("optional-dependencies", {}))'; then
             uv sync --locked --all-groups --extra dev
           else
             uv sync --locked --all-groups
@@ -123,7 +132,9 @@ jobs:
           cache-dependency-glob: uv.lock
       - name: Install development dependencies
         run: |
-          if python -c 'import sys, tomllib; data = tomllib.load(open("pyproject.toml", "rb")); sys.exit("dev" not in data.get("project", {}).get("optional-dependencies", {}))'; then
+          if [[ "${{ inputs.install-all-extras }}" == "true" ]]; then
+            uv sync --locked --all-groups --all-extras
+          elif python -c 'import sys, tomllib; data = tomllib.load(open("pyproject.toml", "rb")); sys.exit("dev" not in data.get("project", {}).get("optional-dependencies", {}))'; then
             uv sync --locked --all-groups --extra dev
           else
             uv sync --locked --all-groups
