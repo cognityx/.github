@@ -2,7 +2,7 @@ name: Request documentation publication
 
 on:
   push:
-    branches: [$default-branch]
+    branches: [main]
 
 permissions:
   contents: read
