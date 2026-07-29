@@ -23,7 +23,8 @@ tests/
 ```
 
 The caller workflow runs the centrally maintained reusable workflow. Adding a
-test anywhere below `tests/` requires no CI workflow change.
+test anywhere below `tests/` requires no CI workflow change. Repositories whose
+tests exercise optional runtime features set `install-all-extras: true`.
 
 ## Pull request merge gate
 
