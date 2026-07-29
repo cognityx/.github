@@ -47,8 +47,8 @@ jobs:
         with:
           enable-cache: true
           cache-dependency-glob: uv.lock
-      - run: uv sync --frozen --extra dev
-      - run: uv run pytest
+      - run: uv sync --locked --extra dev
+      - run: uv run --no-sync pytest
 
   docs:
     name: docs
@@ -66,8 +66,8 @@ jobs:
         with:
           enable-cache: true
           cache-dependency-glob: uv.lock
-      - run: uv sync --frozen --extra dev
-      - run: uv run mkdocs build --strict
+      - run: uv sync --locked --extra dev
+      - run: uv run --no-sync mkdocs build --strict
 
   build:
     name: build
@@ -109,5 +109,5 @@ jobs:
         with:
           enable-cache: true
           cache-dependency-glob: uv.lock
-      - run: uv sync --frozen --extra dev
-      - run: uv run python scripts/verify_wheel_install.py
+      - run: uv sync --locked --extra dev
+      - run: uv run --no-sync python scripts/verify_wheel_install.py
